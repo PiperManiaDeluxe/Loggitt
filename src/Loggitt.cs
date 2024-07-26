@@ -8,7 +8,7 @@ namespace Loggitt;
 /// <remarks>
 /// DEBUG code logs only log if a debugger is attached
 /// </remarks>
-public static class Loggitt
+public static class LoggittLogger
 {
     /// <summary>
     /// Enable or disable log file
