@@ -131,7 +131,7 @@ public static class LoggittLogger
         }
 
         // Log to file
-        File.AppendAllText(LogFile, msg + Environment.NewLine);
+        File.AppendAllText(LogFile, msgOut + Environment.NewLine);
 
         // Throw exception if fatal
         if (code == LogCode.FATAL && FatalLogThrowsException)
