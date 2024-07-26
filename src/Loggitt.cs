@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Reflection;
 
 namespace Loggitt;
 
@@ -184,6 +185,19 @@ public static class LoggittLogger
     /// Logs msg as a Network type log
     /// </summary>
     /// <param name="msg">The contents of the message to be logged</param>
-
     public static void Network(string msg) => Log(msg, LogCode.NETWORK);
+
+    public static void LogApplicationStart()
+    {
+        var appVersion = Assembly.GetExecutingAssembly().GetName().Version;
+        var appName = Assembly.GetExecutingAssembly().GetName().Name;
+        var envOS = Environment.OSVersion.VersionString;
+        var envMachine = Environment.MachineName;
+        var envUser = Environment.UserName;
+
+        Log(
+            $"Starting {appName} v{appVersion} on {envOS} ({envMachine}) as {envUser}",
+            LogCode.INFO
+        );
+    }
 }
