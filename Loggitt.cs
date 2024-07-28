@@ -187,6 +187,9 @@ public static class LoggittLogger
     /// <param name="msg">The contents of the message to be logged</param>
     public static void Network(string msg) => Log(msg, LogCode.NETWORK);
 
+    /// <summary>
+    /// Logs a message indicating the start of the application
+    /// </summary>
     public static void LogApplicationStart()
     {
         var appVersion = Assembly.GetExecutingAssembly().GetName().Version;
