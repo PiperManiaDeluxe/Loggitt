@@ -203,4 +203,21 @@ public static class LoggittLogger
             LogCode.INFO
         );
     }
+
+    /// <summary>
+    /// Logs a message indicating the start of the application, with custom application name and version
+    /// </summary>
+    /// <param name="appName">Name of the executing app</param>
+    /// <param name="appVersion">Version of the executing app</param>
+    public static void LogApplicationStart(string appName, string appVersion)
+    {
+        var envOS = Environment.OSVersion.VersionString;
+        var envMachine = Environment.MachineName;
+        var envUser = Environment.UserName;
+
+        Log(
+            $"Starting {appName} v{appVersion} on {envOS} ({envMachine}) as {envUser}",
+            LogCode.INFO
+        );
+    }
 }
