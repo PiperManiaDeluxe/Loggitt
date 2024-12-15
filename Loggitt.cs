@@ -64,6 +64,8 @@ public static class LoggittLogger
     /// SUCCESS: Success messages
     /// DEBUG: Debug messages
     /// NETWORK: Network messages
+    /// GRAPHICS: Graphics related messages
+    /// OBJECTDISPOSAL: Logged when an object gets disposed
     /// </remarks>
     [Flags]
     public enum LogCode
@@ -74,7 +76,9 @@ public static class LoggittLogger
         FATAL,
         SUCCESS,
         DEBUG, // Only logs if a debugger is attached
-        NETWORK
+        NETWORK,
+        GRAPHICS,
+        OBJECTDISPOSAL
     }
 
     /// <summary>
@@ -89,7 +93,9 @@ public static class LoggittLogger
             { LogCode.FATAL, ConsoleColor.DarkRed },
             { LogCode.SUCCESS, ConsoleColor.Green },
             { LogCode.DEBUG, ConsoleColor.DarkGray },
-            { LogCode.NETWORK, ConsoleColor.Blue }
+            { LogCode.NETWORK, ConsoleColor.Blue },
+            { LogCode.GRAPHICS, ConsoleColor.Cyan },
+            { LogCode.OBJECTDISPOSAL, ConsoleColor.Magenta }
         };
 
     /// <summary>
@@ -186,6 +192,18 @@ public static class LoggittLogger
     /// </summary>
     /// <param name="msg">The contents of the message to be logged</param>
     public static void Network(string msg) => Log(msg, LogCode.NETWORK);
+
+    /// <summary>
+    /// Logs msg as a Graphics type log
+    /// </summary>
+    /// <param name="msg">The contents of the message to be logged</param>
+    public static void Graphics(string msg) => Log(msg, LogCode.GRAPHICS);
+
+    /// <summary>
+    /// Logs msg as a Object Disposal type log
+    /// </summary>
+    /// <param name="msg">The contents of the message to be logged</param>
+    public static void ObjectDisposal(string msg) => Log(msg, LogCode.OBJECTDISPOSAL);
 
     /// <summary>
     /// Logs a message indicating the start of the application
